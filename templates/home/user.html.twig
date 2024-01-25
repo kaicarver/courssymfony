@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block title %}Users{% endblock %}
+
+{% block body %}
+<h1>Users</h1>
+{% for util in utilisateurs %}
+    <li>{{util}}</li>
+{% endfor %}
+{% endblock %}

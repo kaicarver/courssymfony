@@ -33,4 +33,21 @@ class HomeController extends AbstractController
     {
         return $this->redirectToRoute("app_home");
     }
+
+    #[Route('/contact', name: 'contact')]
+    public function contact(): Response
+    {
+        $nom = 'boby';
+        return $this->render('home/contact.html.twig', ['n' => $nom ]);
+    }
+
+    #[Route('/user', name: 'user')]
+  public function afficherUtilisateur() : Response
+  {
+    $users = ['kat', 'john', 'adam', 'Robert'];
+    return $this->render('home/user.html.twig', [
+                'utilisateurs' => $users
+          ]);
+  }
+
 }
