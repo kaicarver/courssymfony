@@ -48,4 +48,13 @@ class CategorieController extends AbstractController
             'cat' => $cat
         ]);
     }
+    #[Route('/categorie2/{id}', name: 'two_categorie')]
+    public function afficherCategorie2(Categorie $cat): Response
+    {
+        // recupereration automatique
+        dump($cat);
+        return $this->render('categorie/categorie.html.twig', [
+            'cat' => $cat
+        ]);
+    }
 }
