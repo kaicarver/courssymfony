@@ -33,9 +33,19 @@ class CategorieController extends AbstractController
     {
         // recuperer
         $cats = $doctrine->getRepository(Categorie::class)->findAll();
-        return $this->render
-        ('categorie/list.html.twig', [
+        dump($cats);
+        return $this->render('categorie/list.html.twig', [
             'lisCat' => $cats
+        ]);
+    }
+    #[Route('/categorie1', name: 'one_categorie')]
+    public function afficherCategorie(ManagerRegistry $doctrine): Response
+    {
+        // recuperer
+        $cat = $doctrine->getRepository(Categorie::class)->find(1);
+        dump($cat);
+        return $this->render('categorie/categorie.html.twig', [
+            'cat' => $cat
         ]);
     }
 }
