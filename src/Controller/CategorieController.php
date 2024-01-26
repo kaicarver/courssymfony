@@ -57,4 +57,14 @@ class CategorieController extends AbstractController
             'cat' => $cat
         ]);
     }
+    #[Route('/editCategorie/{id}', name: 'edit_categorie')]
+    public function modifierCategorie(ManagerRegistry $doctrine, Categorie $cat): Response
+    {
+        $em = $doctrine->getManager();
+        $cat->setNomCat("Matelas");
+        $cat->setDescription("lits et matelas");
+        $em->flush();
+        return $this->redirectToRoute("list_categorie");
+    }
+
 }

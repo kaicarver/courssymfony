@@ -13,14 +13,19 @@
 <th>ID</th>
 <th>Name</th>
 <th>Description</th>
+<th>...</th>
 </tr>
 {% for cat in lisCat %}
 <tr>
 <td>{{ cat.id }}</td>
 <td><a href="/categorie2/{{ cat.id }}">{{ cat.nomCat }}</a></td>
 <td>{{ cat.description }}</td>
+<td><a href="/editCategorie/{{ cat.id }}">Edit</a></td>
 </tr>
 {% endfor %}
 </div>
+</table>
+
+<a href="/addCategorie">Add</a>
 
 {% endblock %}
