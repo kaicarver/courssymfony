@@ -26,8 +26,11 @@ class CategorieController extends AbstractController
         $cat = new Categorie();
         $form = $this->createForm(CategorieType::class, $cat);
         $form->handleRequest($request);
-        $em->persist($cat);
-        $em->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($cat);
+            $em->flush();
+            return $this->redirectToRoute('list_categorie');
+        }
         return $this->render('categorie/add.html.twig', [
             'f' => $form
         ]);
