@@ -66,5 +66,13 @@ class CategorieController extends AbstractController
         $em->flush();
         return $this->redirectToRoute("list_categorie");
     }
+    #[Route('/deleteCategorie/{id}', name: 'delete_categorie')]
+    public function supprimerCategorie(ManagerRegistry $doctrine, Categorie $cat): Response
+    {
+        $em = $doctrine->getManager();
+        $em->remove($cat);
+        $em->flush();
+        return $this->redirectToRoute("list_categorie");
+    }
 
 }
