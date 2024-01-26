@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccueilController!{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href={{ asset('css/style.css') }}
+{% endblock %}
+
+{% block body %}
+<h1>Hello {{ controller_name }} {{nom}} !</h1>
+
+{% endblock %}
