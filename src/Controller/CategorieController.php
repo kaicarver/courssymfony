@@ -5,8 +5,10 @@ namespace App\Controller;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Categorie;
+use App\Form\CategorieType;
 
 class CategorieController extends AbstractController
 {
@@ -18,15 +20,17 @@ class CategorieController extends AbstractController
         ]);
     }
     #[Route('/addCategorie', name: 'add_categorie')]
-    public function ajouterCategorie(ManagerRegistry $doctrine): Response
+    public function ajouterCategorie(ManagerRegistry $doctrine, Request $request): Response
     {
         $em = $doctrine->getManager();
         $cat = new Categorie();
-        $cat->setNomCat("Salon");
-        $cat->setDescription("etc");
+        $form = $this->createForm(CategorieType::class, $cat);
+        $form->handleRequest($request);
         $em->persist($cat);
         $em->flush();
-        return $this->redirectToRoute("list_categorie");
+        return $this->render('categorie/add.html.twig', [
+            'f' => $form
+        ]);
     }
     #[Route('/listCategorie', name: 'list_categorie')]
     public function afficherCategories(ManagerRegistry $doctrine): Response
