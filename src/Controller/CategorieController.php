@@ -73,6 +73,21 @@ class CategorieController extends AbstractController
         $em->flush();
         return $this->redirectToRoute("list_categorie");
     }
+    #[Route('/editCategorie1/{id}', name: 'edit1_categorie')]
+    public function modifierCategorie1(ManagerRegistry $doctrine, Categorie $cat, Request $request): Response
+    {
+        $em = $doctrine->getManager();
+        $form = $this->createForm(CategorieType::class, $cat);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($cat);
+            $em->flush();
+            return $this->redirectToRoute('list_categorie');
+        }
+        return $this->render('categorie/add.html.twig', [
+            'f' => $form->createView()
+        ]);
+    }
     #[Route('/deleteCategorie/{id}', name: 'delete_categorie')]
     public function supprimerCategorie(ManagerRegistry $doctrine, Categorie $cat): Response
     {

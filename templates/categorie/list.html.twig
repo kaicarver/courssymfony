@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CategorieController!{% endblock %}
+{% block title %}List Categories !{% endblock %}
 
 {% block body %}
 <style>
@@ -13,18 +13,16 @@
 <th>ID</th>
 <th>Name</th>
 <th>Description</th>
-<th>...</th>
-<th>...</th>
-<th>...</th>
 </tr>
 {% for cat in lisCat %}
 <tr>
 <td>{{ cat.id }}</td>
 <td><a href="/categorie2/{{ cat.id }}">{{ cat.nomCat }}</a></td>
 <td>{{ cat.description }}</td>
-<td><a href="">Edit</a></td>
-<td><a href="/editCategorie/{{ cat.id }}">MAT</a></td>
-<td><a href="/deleteCategorie/{{ cat.id }}">Delete</a></td>
+<td><a href="/editCategorie/{{ cat.id }}" class="btn btn-warning">MAT</a></td>
+<td><a href="{{path('edit_categorie', { id : cat.id })}}" class="btn btn-warning">MAT</a></td>
+<td><a href="/editCategorie1/{{ cat.id }}" class="btn btn-warning">Edit</a></td>
+<td><a href="/deleteCategorie/{{ cat.id }}" class="btn btn-warning">Delete</a></td>
 </tr>
 {% endfor %}
 </div>
