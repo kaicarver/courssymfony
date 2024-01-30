@@ -36,6 +36,7 @@ class UtilisateurController extends AbstractController
             $em->persist($user);
             $em->flush();
             // redirection login
+            return $this->redirectToRoute("app_login");
         }
         return $this->render('utilisateur/add.html.twig', [
             'f' => $form->createView(),
