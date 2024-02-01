@@ -19,7 +19,8 @@
         {% if app.user %}
             <div>
                 <a href={{path("app_logout")}} class="btn btn-sm btn-danger">Se deconnecter</a>
-                <a href={{path("add_categorie")}} class="btn btn-sm btn-danger">Nouvelle categorie</a>
+                <a href={{path("add_categorie")}} class="btn btn-sm btn-warning">Nouvelle categorie</a>
+                <a href=/ class="btn btn-sm btn-success">Home</a>
                 You are logged in as {{ app.user.userIdentifier }}
             </div>
         {% else %}
