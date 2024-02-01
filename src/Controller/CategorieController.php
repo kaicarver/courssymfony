@@ -21,7 +21,7 @@ class CategorieController extends AbstractController
         ]);
     }
     #[Route('/addCategorie', name: 'add_categorie')]
-    #[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('ROLE_USER')]
     public function ajouterCategorie(ManagerRegistry $doctrine, Request $request): Response
     {
         $em = $doctrine->getManager();
